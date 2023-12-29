@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="flex flex-col text-[#fafafa]">
       <div className="w-full grid md:grid-cols-2">
         <div className="bg-slate-700 pl-10 py-10 flex items-center flex-col justify-end">
-          <h3 className="text-4xl mb-4 font-medium">Contact Us</h3>
+          <h3 className="text-4xl mb-4 font-clash-display font-medium">Contact Us</h3>
           <p>123 ABS Street, Uni 21, Bangladesh</p>
           <p>+88 123456789</p>
           <p>Mon - Fri: 08:00 - 22:00</p>
@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
 
         <div className="bg-gray-900 pl-10 py-10 flex items-center flex-col justify-start">
-          <h3 className="text-4xl mb-4 font-medium">Follow Us</h3>
+          <h3 className="text-4xl mb-4 font-clash-display font-medium">Follow Us</h3>
           <p>Join us on our social media</p>
           <div className="flex gap-4 text-4xl mt-4">
             <a href="https://www.facebook.com/">

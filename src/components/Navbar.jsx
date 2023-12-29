@@ -32,17 +32,17 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-[#15151577] rounded-sm backdrop-blur-md w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-[#151515ad] rounded-sm backdrop-blur-md w-52"
           >
             {links}
           </ul>
         </div>
 
-        <div className="flex flex-col">
-          <span className="uppercase text-xl font-clash-display font-medium">
+        <div className="">
+          <span className="uppercase whitespace-nowrap inline md:block text-xl font-clash-display font-medium">
             BISTRO BOSS
           </span>
-          <span className="uppercase tracking-[.15em] font-clash-display font-normal">
+          <span className="uppercase md:block hidden tracking-[.15em] font-clash-display font-normal">
             Restaurant
           </span>
         </div>

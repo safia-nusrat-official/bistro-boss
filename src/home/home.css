@@ -1,0 +1,10 @@
+.section-bg{
+    background-image: url("./../assets/home/chef-service.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.parallax-bg{
+    background-image: url("./../assets/home/featured.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}

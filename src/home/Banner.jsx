@@ -13,7 +13,7 @@ export const Banner = () => {
     <Carousel
       autoPlay={true}
       infiniteLoop={true}
-      showArrows={false}
+      showArrows={true}
       swipeable={true}
       showStatus={false}
     >
