@@ -1,7 +1,7 @@
 import sectionBanner from "./assets/ccontactontact/banner.jpg";
 import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
-import { IoSend, IoTimeSharp } from "react-icons/io5";
+import { IoTimeSharp } from "react-icons/io5";
 
 import SectionCover from "./components/SectionCover";
 import SectionTitle from "./components/sectionTitle";
@@ -72,46 +72,11 @@ export const ContactUs = () => {
           sub_heading="SEnd us a message"
         ></SectionTitle>
 
-        <form className="p-6 bg-zinc-200 rounded-md">
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="relative">
-              <input
-                id="name"
-                type="text"
-                className="mt-8 w-full p-4 outline-none rounded-md"
-                placeholder="Enter your name."
-              />
-              <label htmlFor="name" className="absolute font-semibold left-0">
-                Name*
-              </label>
-            </div>
-            <div className="relative">
-              <input
-                id="email"
-                type="text"
-                className="mt-8 w-full p-4 outline-none rounded-md"
-                placeholder="Enter your name."
-              />
-              <label htmlFor="email" className="absolute font-semibold left-0">
-                Email*
-              </label>
-            </div>
+        <form className="p-6 bg-gray-300 rounded-md">
+          <div className="grid md:grid-cols-2 gap-2">
+            <input type="text" className="p-4" placeholder="Enter your name."/>
+            <input type="text" className="p-4" placeholder="Enter your email."/>
           </div>
-
-          <div className="relative mt-6">
-              <textarea 
-                rows={10}
-                id="name"
-                type="text"
-                className="mt-8 w-full p-4 outline-none rounded-md"
-                placeholder="Write your message."
-              />
-              <label htmlFor="name" className="absolute font-semibold left-0">
-                Message*
-              </label>
-            </div>
-
-            <button className="btn mt-6 px-6 bg-gradient-to-r from-[#835D23] to-[#B58130] text-[#fbfbfb] font-medium text-xl">Send <IoSend></IoSend></button>
         </form>
       </section>
     </div>
