@@ -2,6 +2,7 @@ import React from "react";
 import SectionTitle from "../components/sectionTitle";
 import useMenu from "../hooks/useMenu";
 import MenuCard from "../components/MenuCard";
+import { Link } from "react-router-dom";
 
 const Recommended = () => {
   const [menu] = useMenu();
@@ -14,7 +15,8 @@ const Recommended = () => {
 
       <div className="flex md:flex-nowrap flex-wrap gap-4">
         {menu.length > 3 &&
-          menu.slice(3, 6).map((item) => <MenuCard data={item}></MenuCard>)}
+          menu.slice(3, 6).map((item) => 
+          <Link to={`/shop/${item?.category}`}><MenuCard data={item}></MenuCard></Link>)}
       </div>
     </section>
   );

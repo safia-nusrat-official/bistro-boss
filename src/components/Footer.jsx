@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="flex flex-col text-[#fafafa]">
       <div className="w-full grid md:grid-cols-2">
-        <div className="bg-slate-700 pl-10 py-10 flex items-center flex-col justify-end">
+        <div className="bg-slate-700 md:pl-10 py-10 flex items-center flex-col md:justify-end justify-center">
           <h3 className="text-4xl mb-4 font-clash-display font-medium">Contact Us</h3>
           <p>123 ABS Street, Uni 21, Bangladesh</p>
           <p>+88 123456789</p>
@@ -15,7 +15,7 @@ const Footer = () => {
           <p>Sat - Sun: 10:00 - 23:00</p>
         </div>
 
-        <div className="bg-gray-900 pl-10 py-10 flex items-center flex-col justify-start">
+        <div className="bg-gray-900 md:pl-10 py-10 flex items-center flex-col md:justify-start justify-center">
           <h3 className="text-4xl mb-4 font-clash-display font-medium">Follow Us</h3>
           <p>Join us on our social media</p>
           <div className="flex gap-4 text-4xl mt-4">
