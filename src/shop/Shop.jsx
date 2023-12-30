@@ -7,6 +7,7 @@ import MenuCard from "../components/MenuCard";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./shop.css"
+import { Helmet } from "react-helmet-async";
 
 const Shop = () => {
   const {category} = useParams()
@@ -23,6 +24,10 @@ const Shop = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Bistro Boss | Shop</title>
+      </Helmet>
+
       <SectionCover
         img={sectionBanner}
         banner={true}

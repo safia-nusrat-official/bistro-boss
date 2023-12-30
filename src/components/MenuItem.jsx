@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const MenuItem = ({ data }) => {
   const { name, recipe, price, image, _id } = data;
   return (
-    <Link to={`/items/${_id}`} className="flex flex-wrap items-start hover:bg-black/5 p-4 md:flex-nowrap">
+    <Link to={`/items/${_id}`} className="flex flex-wrap items-start hover:bg-black/5 hover:scale-105 transition-transform p-4 md:flex-nowrap">
       <img
         src={image}
         className="md:rounded-tl-none md:rounded-r-full object-cover  md:rounded-b-full rounded-full md:w-20 w-full  aspect-square" alt=""

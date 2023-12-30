@@ -9,6 +9,7 @@ import SectionTitle from "../components/sectionTitle";
 import useMenu from "../hooks/useMenu";
 import MenuItem from "../components/MenuItem";
 import MenuGrid from "../components/MenuGrid";
+import { Helmet } from "react-helmet-async";
 
 export const Menu = () => {
   const [menu, loading] = useMenu();
@@ -20,6 +21,10 @@ export const Menu = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Bistro Boss | Menu</title>
+      </Helmet>
+
       <SectionCover
         img={sectionBanner}
         banner={true}
