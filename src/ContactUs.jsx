@@ -1,8 +1,8 @@
-import sectionBanner from "./assets/contact/banner.jpg";
+import sectionBanner from "./assets/ccontactontact/banner.jpg";
 import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoTimeSharp } from "react-icons/io5";
-
+import { IoSend } from "react-icons/io5";
 import SectionCover from "./components/SectionCover";
 import SectionTitle from "./components/sectionTitle";
 
@@ -70,9 +70,13 @@ export const ContactUs = () => {
 
         <form className="p-6 bg-gray-300 rounded-md">
           <div className="grid md:grid-cols-2 gap-2">
-            <input type="text" className="p-4" placeholder="Enter your name."/>
-            <input type="text" className="p-4" placeholder="Enter your email."/>
+            <input id="name" type="text" className="p-4" placeholder="Enter your name."/>
+            <label htmlFor="name" className="text-xl mb-2">Name*</label>
+            <input id="email" type="text" className="p-4" placeholder="Enter your email."/>
+          <label htmlFor="name" className="text-xl mb-2">Email*</label>
           </div>
+          <textArea rows={6} placeholder="Write your message" className="p-4"></textArea>
+      <button className="btn">Send Message <IoSend></IoSend></button>
         </form>
       </section>
     </div>
