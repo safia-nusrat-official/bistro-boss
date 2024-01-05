@@ -17,10 +17,12 @@ const PopularMenu = () => {
       ></SectionTitle>
       <div className="grid md:grid-cols-2 gap-4">
         {loading && (
-          <span className="loading loading-spinner loading-lg"></span>
+          <div className="w-full text-center col-span-2">
+            <span className="loading loading-spinner loading-lg"></span>
+          </div>
         )}
         {popularMenu &&
-          popularMenu.map((item) => <MenuItem data={item}></MenuItem>)}
+          popularMenu.map((item) => <MenuItem key={item?._id} data={item}></MenuItem>)}
       </div>
       <Link to="/menu" className="w-full justify-center flex">
         <Btn>View Full Menu</Btn>

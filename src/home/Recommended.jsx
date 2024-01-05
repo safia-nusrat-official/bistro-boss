@@ -16,7 +16,7 @@ const Recommended = () => {
       <div className="flex md:flex-nowrap flex-wrap gap-4">
         {menu.length > 3 &&
           menu.slice(3, 6).map((item) => 
-          <Link to={`/shop/${item?.category}`}><MenuCard data={item}></MenuCard></Link>)}
+          <Link key={item?._id} to={`/shop/${item?.category}`}><MenuCard data={item}></MenuCard></Link>)}
       </div>
     </section>
   );

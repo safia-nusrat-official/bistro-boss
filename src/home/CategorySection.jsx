@@ -10,6 +10,7 @@ import slide2 from "../assets/home/slide2.jpg";
 import slide3 from "../assets/home/slide3.jpg";
 import slide4 from "../assets/home/slide4.jpg";
 import slide5 from "../assets/home/slide5.jpg";
+import { Link } from "react-router-dom";
 
 const CategorySection = () => {
   return (
@@ -76,38 +77,48 @@ const CategorySection = () => {
           className="mySwiper"
         >
           <SwiperSlide className="relative">
-            <img src={slide1} alt="" />
-            <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
-              Salads
-            </div>
+            <Link className="relative" to="/shop/salad">
+              <img src={slide1} alt="" />
+              <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
+                Salads
+              </div>
+            </Link>
           </SwiperSlide>
 
           <SwiperSlide className="relative">
-            <img src={slide2} alt="" />
-            <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
-              Pizzas
-            </div>
+            <Link to="/shop/pizza" className="relative">
+              <img src={slide2} alt="" />
+              <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
+                Pizzas
+              </div>
+            </Link>
           </SwiperSlide>
 
           <SwiperSlide className="relative">
-            <img src={slide3} alt="" />
-            <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
-              Soups
-            </div>
+            <Link to="/shop/soup" className="relative">
+              <img src={slide3} alt="" />
+              <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
+                Soups
+              </div>
+            </Link>
           </SwiperSlide>
 
           <SwiperSlide className="relative">
-            <img src={slide4} alt="" />
-            <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
-              Desserts
-            </div>
+            <Link to="/shop/dessert" className="relative">
+              <img src={slide4} alt="" />
+              <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
+                Desserts
+              </div>
+            </Link>
           </SwiperSlide>
 
           <SwiperSlide className="relative">
-            <img src={slide5} alt="" />
-            <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
-              Drinks
-            </div>
+            <Link to="/shop/drinks" className="relative">
+              <img src={slide5} alt="" />
+              <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
+                Drinks
+              </div>
+            </Link>
           </SwiperSlide>
         </Swiper>
       </div>

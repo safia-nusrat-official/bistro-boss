@@ -1,4 +1,4 @@
-import sectionBanner from "./assets/ccontactontact/banner.jpg";
+import sectionBanner from "./assets/contact/banner.jpg";
 import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoTimeSharp } from "react-icons/io5";

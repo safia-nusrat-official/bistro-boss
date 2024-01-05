@@ -1,3 +1,4 @@
+import slide1 from "./../assets/home/banner-img-1.jpg";
 import React from "react";
 import { Banner } from "./Banner";
 import CategorySection from "./CategorySection";
@@ -14,8 +15,13 @@ const Home = () => {
       <Helmet>
         <title>Bistro Boss</title>
       </Helmet>
+<section className="relative" style={{backgroundImage:`url(${slide1})`}}>
+<div className="absolute md:bg-white bg-black md:bg-opacity-100 bg-opacity-50 w-full h-full"></div>
+<div className="md:pt-0 pt-16">
 
-      <Banner></Banner>
+<Banner></Banner>
+</div>
+</section>
       <CategorySection></CategorySection>
 
       <section className="md:mx-28 md:my-12 md:p-20 section-bg bg-fixed">

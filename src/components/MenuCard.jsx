@@ -1,11 +1,12 @@
 import React from "react";
 import Btn from "./Btn";
+import { Link } from "react-router-dom";
 
 const MenuCard = ({ data }) => {
-  const { name, recipe, image} = data;
+  const { name, recipe, image, _id} = data;
 
   return (
-    <div className="card w-[300px] rounded-md bg-white border-[1px] border-gray-400 hover:bg-[#fafafa] hover:shadow-sm cursor-pointer">
+    <Link to={`/items/${_id}`} className="card md:w-[300px] rounded-md bg-white border-[1px] border-gray-400 hover:bg-[#fafafa] hover:shadow-sm cursor-pointer">
       <figure className="">
         <img src={image} alt="Shoes" className="w-full"/>
       </figure>
@@ -16,7 +17,7 @@ const MenuCard = ({ data }) => {
           <Btn>Add to cart</Btn>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -15,7 +15,7 @@ export const Banner = () => {
       infiniteLoop={true}
       showArrows={true}
       swipeable={true}
-      showStatus={false}
+      showStatus={false}     
     >
       <div>
         <img src={slide1} />

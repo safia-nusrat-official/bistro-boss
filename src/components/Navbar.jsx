@@ -1,11 +1,15 @@
 import { IoClose } from "react-icons/io5";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TbMenu } from "react-icons/tb";
 import "./nav.css";
 import { Link, NavLink } from "react-router-dom";
 import { HiMenuAlt1 } from "react-icons/hi";
+import { AuthContext } from "../providers/AuthProvider";
+import { MdOutlineLogout } from "react-icons/md";
 
 const Navbar = () => {
+  const { user, loading, Logout } = useContext(AuthContext);
+
   const links = (
     <>
       <NavLink
@@ -37,26 +41,55 @@ const Navbar = () => {
       </NavLink>
 
       <NavLink
+        to="/dashboard"
+        className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
+      >
+        <a>Dashboard</a>
+      </NavLink>
+
+      <NavLink
         to="/contact-us"
         className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
       >
         <a>Contact Us</a>
       </NavLink>
 
-      <Link to="/login">
-        <button className="btn btn-ghost ml-4 border-t-0 border-x-0 px-6 border-b-4 border-white">
-          Login
-        </button>
-      </Link>
+      {user ? (
+        <>
+          <Link
+            to="/profile"
+            className="md:flex hidden ml-4 items-center gap-4"
+          >
+            <span>{user?.displayName}</span>
+            <img
+              src={user?.photoURL}
+              className="w-10 rounded-full aspect-square"
+              alt=""
+            />
+          </Link>
+          <button
+            className="text-2xl m-2 hidden md:block"
+            onClick={() => Logout()}
+          >
+            <MdOutlineLogout></MdOutlineLogout>
+          </button>
+        </>
+      ) : (
+        <NavLink to="/login" className="md:ml-4 font-semibold">Login</NavLink>
+      )}
     </>
   );
 
   const [showNav, setShowNav] = useState(false);
 
   return (
-    <nav className="navbar bg-[#15151577] fixed z-30 md:px-8 text-white md:backdrop-blur-sm p-0">
+    <nav
+      className={`navbar md:items-center items-stretch bg-[#15151577] fixed z-30 md:px-8 text-white justify-between md:backdrop-blur-md p-0 ${
+        showNav ? "blurred" : ""
+      }`}
+    >
       {/* brand&logo */}
-      <div className="navbar-start relative">
+      <div className="md:navbar-start md:w-fit w-full backdrop-blur-sm md:backdrop-blur-0 relative">
         <div className="relative">
           <div
             onClick={() => setShowNav(!showNav)}
@@ -66,30 +99,51 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="">
+        <div className="bg-transparent items-center w-full md:flex-col flex justify-between">
           <span className="uppercase whitespace-nowrap inline md:block text-xl font-clash-display font-medium">
             BISTRO BOSS
           </span>
           <span className="uppercase md:block hidden tracking-[.15em] font-clash-display font-normal">
             Restaurant
           </span>
+          {user && (
+            <div className="flex">
+              <Link to="/profile" className="flex md:hidden items-center">
+                <img
+                  src={user?.photoURL}
+                  className="w-10 rounded-full aspect-square"
+                  alt=""
+                />
+                <span className="hidden md:inline-flex">
+                  {user?.displayName}
+                </span>
+              </Link>
+              <button
+                className="text-2xl m-2 md:hidden"
+                onClick={() => Logout()}
+              >
+                <MdOutlineLogout></MdOutlineLogout>
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
       {/* mobile-screen navbar links*/}
       <div
-        className={`absolute top-2 mt-14 z-50 p-6 w-full h-screen md:hidden bg-[#15151577] backdrop-blur-md mobile-nav transition-transform transform
-            ${showNav ? "block" : "hidden"}
-             ${showNav ? "translate-y-0" : "-translate-y-full"}`}
+        className={`absolute mt-16 z-50 p-6 items-start flex w-full h-screen md:hidden bg-[#15151577] mobile-nav drop-nav
+            ${showNav ? "visible" : ""}`}
       >
-        <ul className="flex flex-col gap-4 text-2xl font-clash-display">
+        <ul className="flex flex-col gap-4 text-2xl font-clash-display justify-start">
           {links}
         </ul>
       </div>
-      
+
       {/* desktop-screen navbar link */}
-      <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 flex items-center">{links}</ul>
+      <div className=" hidden lg:flex">
+        <ul className="menu font-clash-display menu-horizontal px-1 flex items-center">
+          {links}
+        </ul>
       </div>
     </nav>
   );

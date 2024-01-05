@@ -45,7 +45,7 @@ const Shop = () => {
           </TabList>
 
           <TabPanel>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
             { salads &&
                 salads.map(item=><MenuCard data={item} key={item?._id}></MenuCard>)
               }

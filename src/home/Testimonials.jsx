@@ -27,7 +27,7 @@ const Testimonials = () => {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {reviews &&
           reviews.map((review) => (
-            <SwiperSlide>
+            <SwiperSlide key={review?.name}>
               <div className="px-12 md:px-20 text-center flex flex-col items-center justify-center">
                 <Rating style={{ maxWidth: 180 }} value={review?.rating} readOnly />
                 <FaQuoteLeft className="mt-4 text-8xl"></FaQuoteLeft>
