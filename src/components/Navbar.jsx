@@ -1,3 +1,4 @@
+import { FaCartShopping } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import React, { useContext, useState } from "react";
 import { TbMenu } from "react-icons/tb";
@@ -16,43 +17,48 @@ const Navbar = () => {
         to="/"
         className="font-semibold transition-colors hover:text-[#ecd610]"
       >
-        <a>Home</a>
+        <span>Home</span>
       </NavLink>
 
       <NavLink
         to="/menu"
         className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
       >
-        <a>Our Menu</a>
+        <span>Our Menu</span>
       </NavLink>
 
       <NavLink
         to={`/shop/salad`}
         className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
       >
-        <a>Our Shop</a>
+        <span>Our Shop</span>
       </NavLink>
-
+{/* 
       <NavLink
         to="/orders"
         className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
       >
-        <a>Orders</a>
-      </NavLink>
-
-      <NavLink
-        to="/dashboard"
-        className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
-      >
-        <a>Dashboard</a>
-      </NavLink>
+        <span>Orders</span>
+      </NavLink> */}
 
       <NavLink
         to="/contact-us"
         className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
       >
-        <a>Contact Us</a>
+        <span>Contact Us</span>
       </NavLink>
+      {
+        user && <NavLink
+        to={`/cart/${user?.email}`}
+        className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
+      >
+        <span className="flex items-center gap-2">
+          Cart <FaCartShopping className="text-xl"></FaCartShopping>
+          <div className="badge">4+</div>
+        </span>
+      </NavLink>
+      }
+      
 
       {user ? (
         <>
@@ -63,7 +69,7 @@ const Navbar = () => {
             <span>{user?.displayName}</span>
             <img
               src={user?.photoURL}
-              className="w-10 rounded-full aspect-square"
+              className="w-10 object-cover rounded-full aspect-square"
               alt=""
             />
           </Link>
@@ -75,7 +81,9 @@ const Navbar = () => {
           </button>
         </>
       ) : (
-        <NavLink to="/login" className="md:ml-4 font-semibold">Login</NavLink>
+        <NavLink to="/login" className="md:ml-4 font-semibold">
+          Login
+        </NavLink>
       )}
     </>
   );
@@ -111,7 +119,7 @@ const Navbar = () => {
               <Link to="/profile" className="flex md:hidden items-center">
                 <img
                   src={user?.photoURL}
-                  className="w-10 rounded-full aspect-square"
+                  className="w-10 object-cover rounded-full aspect-square"
                   alt=""
                 />
                 <span className="hidden md:inline-flex">

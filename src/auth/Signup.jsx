@@ -15,12 +15,13 @@ const Signup = () => {
   const API_KEY = import.meta.env.VITE_IMG_HOSTING_API_KEY;
   const API_URL = `https://api.imgbb.com/1/upload?key=${API_KEY}`;
   const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[?$%&*#@_\-;!])[A-Za-z\d?$%&*#@_\-;!]{6,}$/;
+    
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
   const { Signup, UpdateProfile } = useContext(AuthContext);
   const {
     register,
@@ -43,22 +44,18 @@ const Signup = () => {
       .then((res) => {
         res.user.displayName = name;
         res.user.photoURL = imgURL;
-
         UpdateProfile(name, imgURL)
-          .then((result) => {
-            console.log(result);
-          })
+          .then((result) => {})
           .catch((err) => console.log(err));
 
         Swal.fire({
-          icon:"success",
-          title:"Account created successfully!"
-        })
-        console.log(res.user);
-        navigate(location?.state?.from?.pathname||"/", replace=true)
+          icon: "success",
+          title: "Account created successfully!",
+        });
+        navigate(location?.state?.from?.pathname || "/", (replace = true));
       })
       .catch((err) => {
-        console.log(err.code)
+        console.log(err.code);
       });
   };
 
@@ -93,13 +90,13 @@ const Signup = () => {
               className="mt-6 outline-none p-4 w-full relative border-2 rounded-md"
               id="name"
               {...register("name", {
-                required: "Name is required."
+                required: "Name is required.",
               })}
             />
           </div>
-            {
-              errors.name?.type === "required" && <p className="text-left text-red-500">{errors.name.message}</p>
-            }
+          {errors.name?.type === "required" && (
+            <p className="text-left text-red-500">{errors.name.message}</p>
+          )}
           <div className="flex mt-6 relative">
             <label htmlFor="photo" className="absolute left-0 font-semibold">
               Profile Picture*
@@ -110,14 +107,14 @@ const Signup = () => {
               id="photo"
               className="file-input w-full mt-6 border-2 rounded-md outline-none border-gray-200"
               {...register("photo", {
-                required: "Profile photo required."
+                required: "Profile photo required.",
               })}
             />
             <BsUpload className="absolute bg-white pl-2 right-4 text-3xl top-1/2"></BsUpload>
           </div>
-            {
-              errors.photo?.type === "required" && <p className="text-left text-red-500">{errors.photo.message}</p>
-            }
+          {errors.photo?.type === "required" && (
+            <p className="text-left text-red-500">{errors.photo.message}</p>
+          )}
           <div className="flex mt-6 relative">
             <label htmlFor="email" className="absolute left-0 font-semibold">
               Email*
@@ -142,11 +139,10 @@ const Signup = () => {
               {errors.email?.message}
             </p>
           )}
-          {
-            errors.email?.type === "pattern" && (
-              <p role="alert" className="text-red-500 text-left">
-                {errors.email?.message}
-              </p>
+          {errors.email?.type === "pattern" && (
+            <p role="alert" className="text-red-500 text-left">
+              {errors.email?.message}
+            </p>
           )}
           <div className="flex mt-6 relative">
             <label htmlFor="password" className="absolute left-0 font-semibold">
@@ -165,9 +161,10 @@ const Signup = () => {
                   message: "Password must be atleast 6 characters long.",
                 },
                 pattern: {
-                  value:passwordRegex,
-                  message:"Password must contain both uppercase and lowercase characters and numbers and special characters like $ * & % # @."
-                }
+                  value: passwordRegex,
+                  message:
+                    "Password must contain both uppercase and lowercase characters and numbers and special characters like $ * & % # @.",
+                },
               })}
             />
             <button

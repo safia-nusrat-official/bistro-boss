@@ -10,8 +10,8 @@ const Profile = () => {
       className="md:p-20 bg-cover bg-no-repeat bg-fixed relative"
       style={{ backgroundImage: `url(${user?.photoURL})` }}
     >
-      <div className="flex gap-6 md:flex-nowrap flex-wrap bg-opacity-15 rounded-md backdrop-blur-md text-white bg-black p-20 justify-between">
-        <img className="rounded-full w-48" src={user?.photoURL} alt="" />
+      <div className="flex gap-6 md:flex-nowrap flex-wrap bg-opacity-15 rounded-md backdrop-blur-md text-white bg-black md:p-20 pt-20 p-8 justify-between">
+        <img className="rounded-full aspect-square object-cover w-48" src={user?.photoURL} alt="" />
         <div className="flex flex-col font-clash-display ">
           <h2 className="text-6xl font-semibold">{user?.displayName}</h2>
           <span className="text-2xl">{user?.email}</span>

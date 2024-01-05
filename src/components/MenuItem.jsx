@@ -15,7 +15,7 @@ const MenuItem = ({ data }) => {
           {name} <span className="md:inline hidden">------</span>
         <span className="text-yellow-400 md:hidden inline font-medium text-2xl ml-4">${price}</span>
         </h3>
-        <p className="mt-2">{recipe}</p>
+        <p className="mt-2">{recipe.length > 100 ? <span>{recipe.slice(0, 100)}...</span> : recipe}</p>
 
         </div>
         

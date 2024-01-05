@@ -2,7 +2,7 @@ import React from 'react'
 
 const SectionCover = ({img, title, desc, banner=false}) => {
   return (
-    <section className={`cover-bg bg-fixed md:py-20 md:px-28`}
+    <section className={`cover-bg bg-cover bg-no-repeat bg-fixed md:py-20 md:px-28`}
     style={{
         backgroundImage:`url("${img}")`
     }}>

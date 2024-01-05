@@ -1,10 +1,10 @@
 [
     {
-        "name": "Haddock",
-        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
-        "category": "popular",
-        "price": 14.7
+        "name": "Berry Burst Fizz",
+        "recipe": "Experience the effervescence of our Berry Burst Fizz. This sparkling sensation combines a medley of ripe berries, creating a burst of fruity flavors that dance on your palate. The refreshing fizz adds a delightful effervescent touch, making it a perfect choice for those seeking a vibrant and uplifting drink.",
+        "image": "https://i.ibb.co/cQDvN6F/Berry-Burst-Fizz.jpg",
+        "category": "drinks",
+        "price": 7.38
     },
     {
         "name": "Haddock",

@@ -11,11 +11,14 @@ import { api } from "../main";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../profile/Profile";
 import UpdateProfile from "../profile/UpdateProfile";
+import ErrorPage from "../Error404";
+import Cart from "../cart/Cart";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -46,6 +49,16 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/menu/${params?.id}`),
+      },
+      {
+        path: "/cart/:email",
+        element: (
+          <PrivateRoute>
+            <Cart></Cart>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/carts/${params?.email}`),
       },
       {
         path: "/contact-us",

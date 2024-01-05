@@ -3,6 +3,7 @@ import dessertBanner from "../assets/menu/dessert-bg.jpeg";
 import pizzaBanner from "../assets/menu/pizza-bg.jpg";
 import saladBanner from "../assets/menu/salad-bg.jpg";
 import soupBanner from "../assets/menu/soup-bg.jpg";
+import drinksBanner from "../assets/menu/drinks-bg.jpg";
 
 import SectionCover from "../components/SectionCover";
 import SectionTitle from "../components/sectionTitle";
@@ -84,6 +85,16 @@ export const Menu = () => {
         ></SectionCover>
 
         <MenuGrid menu={salads.slice(0, 4)}></MenuGrid>
+      </section>
+
+      <section>
+        <SectionCover
+          img={drinksBanner}
+          title="Drinks"
+          desc="Pizza perfection unfolds at Bistro Boss, where artisanal crusts meet premium toppings in a symphony of flavors, creating an unforgettable slice of culinary bliss."
+        ></SectionCover>
+
+        <MenuGrid menu={drinks.slice(0, 4)}></MenuGrid>
       </section>
     </div>
   );
