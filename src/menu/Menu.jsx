@@ -5,12 +5,15 @@ import saladBanner from "../assets/menu/salad-bg.jpg";
 import soupBanner from "../assets/menu/soup-bg.jpg";
 import drinksBanner from "../assets/menu/drinks-bg.jpg";
 
-import SectionCover from "../components/SectionCover";
-import SectionTitle from "../components/sectionTitle";
+import SectionCover from "../components/section components/SectionCover";
+import SectionTitle from "../components/section components/SectionTitle";
 import useMenu from "../hooks/useMenu";
-import MenuItem from "../components/MenuItem";
-import MenuGrid from "../components/MenuGrid";
+import MenuItem from "../components/menu components/MenuItem";
+import MenuGrid from "../components/menu components/MenuGrid";
 import { Helmet } from "react-helmet-async";
+import SearchProvider from "../providers/SearchProvider";
+import SearchBar from "../components/search components/SearchBar";
+import SearchGrid from "../components/search components/SearchGrid";
 
 export const Menu = () => {
   const [menu, loading] = useMenu();
@@ -33,6 +36,13 @@ export const Menu = () => {
         desc="Savor the Symphony: Bistro Boss, where culinary craftsmanship meets diverse delights, inviting you to experience an exquisite symphony of flavors at every turn on Our Menu."
       ></SectionCover>
 
+      <section>
+        <SearchProvider>
+          <SearchBar></SearchBar>
+          <SearchGrid></SearchGrid>
+        </SearchProvider>
+      </section>
+
       <section className="md:mx-28 md:my-12 my-8">
         <SectionTitle
           heading="Today's Offers"
@@ -44,7 +54,7 @@ export const Menu = () => {
             <span className="loading loading-spinner loading-lg"></span>
           )}
           {menu &&
-            menu.slice(0, 6).map((item) => <MenuItem data={item}></MenuItem>)}
+            menu.slice(0, 6).map((item) => <MenuItem key={item?._id} data={item}></MenuItem>)}
         </div>
       </section>
       <section>
@@ -56,7 +66,6 @@ export const Menu = () => {
 
         <MenuGrid menu={desserts.slice(0, 8)}></MenuGrid>
       </section>
-
       <section>
         <SectionCover
           img={pizzaBanner}
@@ -66,7 +75,6 @@ export const Menu = () => {
 
         <MenuGrid menu={pizzas.slice(0, 4)}></MenuGrid>
       </section>
-
       <section>
         <SectionCover
           img={soupBanner}
@@ -76,7 +84,6 @@ export const Menu = () => {
 
         <MenuGrid menu={soups.slice(0, 4)}></MenuGrid>
       </section>
-
       <section>
         <SectionCover
           img={saladBanner}
@@ -86,7 +93,6 @@ export const Menu = () => {
 
         <MenuGrid menu={salads.slice(0, 4)}></MenuGrid>
       </section>
-
       <section>
         <SectionCover
           img={drinksBanner}

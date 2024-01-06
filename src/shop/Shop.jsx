@@ -1,16 +1,16 @@
 import sectionBanner from "../assets/shop/banner.jpg";
-import SectionCover from "../components/SectionCover";
+import SectionCover from "../components/section components/SectionCover";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 // import "react-tabs/style/react-tabs.css";
 import useMenu from "../hooks/useMenu";
-import MenuCard from "../components/MenuCard";
+import MenuCard from "../components/menu components/MenuCard";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import "./shop.css"
+import "./shop.css";
 import { Helmet } from "react-helmet-async";
 
 const Shop = () => {
-  const {category} = useParams()
+  const { category } = useParams();
   const [menu, loading] = useMenu();
   const desserts = menu.filter((item) => item?.category === "dessert");
   const pizzas = menu.filter((item) => item?.category === "pizza");
@@ -18,8 +18,7 @@ const Shop = () => {
   const salads = menu.filter((item) => item?.category === "salad");
   const drinks = menu.filter((item) => item?.category === "drinks");
 
-  
-  const items = ['salad', 'soup', 'pizza', 'dessert', 'drinks']
+  const items = ["salad", "soup", "pizza", "dessert", "drinks"];
   const [tabIndex, setTabIndex] = useState(items.indexOf(category));
 
   return (
@@ -35,7 +34,7 @@ const Shop = () => {
         desc="Savor the Symphony: Bistro Boss, where culinary craftsmanship meets diverse delights, inviting you to experience an exquisite symphony of flavors at every turn on Our Shop."
       ></SectionCover>
       <section className="md:m-20 m-8">
-        <Tabs defaultIndex={tabIndex} onSelect={(index)=>setTabIndex(index)}>
+        <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <Tab>Salads</Tab>
             <Tab>Soups</Tab>
@@ -46,37 +45,42 @@ const Shop = () => {
 
           <TabPanel>
             <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-            { salads &&
-                salads.map(item=><MenuCard data={item} key={item?._id}></MenuCard>)
-              }
+              {salads &&
+                salads.map((item) => (
+                  <MenuCard data={item} key={item?._id}></MenuCard>
+                ))}
             </div>
           </TabPanel>
           <TabPanel>
-          <div className="grid md:grid-cols-3 gap-4">
-              { soups &&
-                soups.map(item=><MenuCard data={item} key={item?._id}></MenuCard>)
-              }
+            <div className="grid md:grid-cols-3 gap-4">
+              {soups &&
+                soups.map((item) => (
+                  <MenuCard data={item} key={item?._id}></MenuCard>
+                ))}
             </div>
           </TabPanel>
           <TabPanel>
-          <div className="grid md:grid-cols-3 gap-4">
-              { pizzas &&
-                pizzas.map(item=><MenuCard data={item} key={item?._id}></MenuCard>)
-              }
+            <div className="grid md:grid-cols-3 gap-4">
+              {pizzas &&
+                pizzas.map((item) => (
+                  <MenuCard data={item} key={item?._id}></MenuCard>
+                ))}
             </div>
           </TabPanel>
           <TabPanel>
-          <div className="grid md:grid-cols-3 gap-4">
-              { desserts &&
-                desserts.map(item=><MenuCard data={item} key={item?._id}></MenuCard>)
-              }
+            <div className="grid md:grid-cols-3 gap-4">
+              {desserts &&
+                desserts.map((item) => (
+                  <MenuCard data={item} key={item?._id}></MenuCard>
+                ))}
             </div>
           </TabPanel>
           <TabPanel>
-          <div className="grid md:grid-cols-3 gap-4">
-              { drinks &&
-                drinks.map(item=><MenuCard data={item} key={item?._id}></MenuCard>)
-              }
+            <div className="grid md:grid-cols-3 gap-4">
+              {drinks &&
+                drinks.map((item) => (
+                  <MenuCard data={item} key={item?._id}></MenuCard>
+                ))}
             </div>
           </TabPanel>
         </Tabs>

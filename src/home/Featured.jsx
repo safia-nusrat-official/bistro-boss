@@ -1,4 +1,4 @@
-import SectionTitle from "../components/sectionTitle";
+import SectionTitle from "../components/section components/SectionTitle";
 import featuredImg from "../assets/home/featured.jpg";
 import Btn from "../components/Btn";
 import moment from "moment";
@@ -18,7 +18,12 @@ const Featured = () => {
           <div className="text-white">
             <span>{moment().format("MMM DD, yyyy")}</span>
             <h1 className="text-2xl font-clash-display">How to get?</h1>
-            <p className="my-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis facilis dolorem, enim ducimus laboriosam ad quasi maiores eum esse, omnis voluptatibus labore error. Provident, accusantium quos non tempora commodi exercitationem.</p>
+            <p className="my-4">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Blanditiis facilis dolorem, enim ducimus laboriosam ad quasi
+              maiores eum esse, omnis voluptatibus labore error. Provident,
+              accusantium quos non tempora commodi exercitationem.
+            </p>
             <Btn dark={false}>Read More</Btn>
           </div>
         </div>

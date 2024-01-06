@@ -5,7 +5,7 @@ import { TbMenu } from "react-icons/tb";
 import "./nav.css";
 import { Link, NavLink } from "react-router-dom";
 import { HiMenuAlt1 } from "react-icons/hi";
-import { AuthContext } from "../providers/AuthProvider";
+import { AuthContext } from "../../providers/AuthProvider";
 import { MdOutlineLogout } from "react-icons/md";
 
 const Navbar = () => {
@@ -33,7 +33,7 @@ const Navbar = () => {
       >
         <span>Our Shop</span>
       </NavLink>
-{/* 
+      {/* 
       <NavLink
         to="/orders"
         className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
@@ -47,18 +47,17 @@ const Navbar = () => {
       >
         <span>Contact Us</span>
       </NavLink>
-      {
-        user && <NavLink
-        to={`/cart/${user?.email}`}
-        className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
-      >
-        <span className="flex items-center gap-2">
-          Cart <FaCartShopping className="text-xl"></FaCartShopping>
-          <div className="badge">4+</div>
-        </span>
-      </NavLink>
-      }
-      
+      {user && (
+        <NavLink
+          to={`/cart/${user?.email}`}
+          className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
+        >
+          <span className="flex items-center gap-2">
+            Cart <FaCartShopping className="text-xl"></FaCartShopping>
+            <div className="badge">4+</div>
+          </span>
+        </NavLink>
+      )}
 
       {user ? (
         <>

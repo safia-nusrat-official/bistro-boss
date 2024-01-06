@@ -1,6 +1,6 @@
 import { FaQuoteLeft } from "react-icons/fa6";
 import React, { useEffect, useState } from "react";
-import SectionTitle from "../components/sectionTitle";
+import SectionTitle from "../components/section components/SectionTitle";
 import { Rating } from "@smastrom/react-rating";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -29,7 +29,11 @@ const Testimonials = () => {
           reviews.map((review) => (
             <SwiperSlide key={review?.name}>
               <div className="px-12 md:px-20 text-center flex flex-col items-center justify-center">
-                <Rating style={{ maxWidth: 180 }} value={review?.rating} readOnly />
+                <Rating
+                  style={{ maxWidth: 180 }}
+                  value={review?.rating}
+                  readOnly
+                />
                 <FaQuoteLeft className="mt-4 text-8xl"></FaQuoteLeft>
                 <p className="my-4">{review?.details}</p>
                 <span className="text-2xl uppercase text-yellow-400 font-medium">

@@ -2,7 +2,7 @@ import { IoClose } from "react-icons/io5";
 import { CiCirclePlus } from "react-icons/ci";
 import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import MenuItem from "../components/MenuItem";
+import MenuItem from "../components/menu components/MenuItem";
 import bgImg from "../assets/menu/pizza-bg.jpg";
 import useItem from "../hooks/useItem";
 

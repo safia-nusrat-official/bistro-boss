@@ -3,8 +3,8 @@ import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoTimeSharp } from "react-icons/io5";
 
-import SectionCover from "./components/SectionCover";
-import SectionTitle from "./components/sectionTitle";
+import SectionCover from "./components/section components/SectionCover";
+import SectionTitle from "./components/section components/SectionTitle";
 import { Helmet } from "react-helmet-async";
 
 export const ContactUs = () => {
@@ -74,8 +74,12 @@ export const ContactUs = () => {
 
         <form className="p-6 bg-gray-300 rounded-md">
           <div className="grid md:grid-cols-2 gap-2">
-            <input type="text" className="p-4" placeholder="Enter your name."/>
-            <input type="text" className="p-4" placeholder="Enter your email."/>
+            <input type="text" className="p-4" placeholder="Enter your name." />
+            <input
+              type="text"
+              className="p-4"
+              placeholder="Enter your email."
+            />
           </div>
         </form>
       </section>

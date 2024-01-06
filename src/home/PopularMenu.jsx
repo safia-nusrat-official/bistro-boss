@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SectionTitle from "../components/sectionTitle";
+import SectionTitle from "../components/section components/SectionTitle";
 import useMenu from "../hooks/useMenu";
-import MenuItem from "../components/MenuItem";
+import MenuItem from "../components/menu components/MenuItem";
 import Btn from "../components/Btn";
 import { Link } from "react-router-dom";
 
@@ -22,7 +22,9 @@ const PopularMenu = () => {
           </div>
         )}
         {popularMenu &&
-          popularMenu.map((item) => <MenuItem key={item?._id} data={item}></MenuItem>)}
+          popularMenu.map((item) => (
+            <MenuItem key={item?._id} data={item}></MenuItem>
+          ))}
       </div>
       <Link to="/menu" className="w-full justify-center flex">
         <Btn>View Full Menu</Btn>
