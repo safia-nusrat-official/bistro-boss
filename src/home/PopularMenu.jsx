@@ -6,9 +6,13 @@ import Btn from "../components/Btn";
 import { Link } from "react-router-dom";
 
 const PopularMenu = () => {
-  const [menu, loading] = useMenu();
-  const popularMenu = menu.filter((item) => item?.category === "popular");
-
+  const {menu, loading} = useMenu({selectedCategory:""});
+  const [popularMenu, setPopularMenu] = useState([]);
+  useEffect(() => {
+    if (!loading && menu.length>0) {
+      setPopularMenu(menu.filter((item) => item?.category === "popular"));
+    }
+  }, [menu, loading]);
   return (
     <section className="md:mx-28 md:my-8 m-8">
       <SectionTitle

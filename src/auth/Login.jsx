@@ -21,51 +21,70 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+import useUser from "../hooks/useUser";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showError, setShowError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
   const [captchaCorrect, setCaptchaCorrect] = useState(false);
   const captchaRef = useRef(null);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const { Login, LoginGoogle, LoginGitHub, LoginFacebook } = useContext(AuthContext);
-  const navigate = useNavigate()
-  const location = useLocation()
+  const { Login, LoginGoogle, LoginGitHub, LoginFacebook } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const axiosPublic = useAxiosPublic()
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
-
+  } = useForm();
+  // const { handleCreateUser } = useUser();
   const handleForm = (data) => {
-    if(!captchaCorrect){
-      return
+    if (!captchaCorrect) {
+      return;
     }
-    const {email, password} = data
+    const { email, password } = data;
 
     Login(email, password)
       .then((res) => {
         console.log(res.user);
-        navigate(location?.state?.from?.pathname||"/", {replace:true})
+        navigate(location?.state?.from?.pathname || "/", { replace: true });
       })
       .catch((err) => {
-        
         setShowError(true);
-        if(err.message==="Firebase: Error (auth/invalid-credential)."){
-          setErrorMsg("Invalid Credentials")
-        }else{
+        if (err.message === "Firebase: Error (auth/invalid-credential).") {
+          setErrorMsg("Invalid Credentials");
+        } else {
           setErrorMsg(err.message);
         }
       });
   };
 
+  const handleLoginWithGoogle = () => {
+    LoginGoogle().then((res) => {
+      if (res.user) {
+        const user = res.user
+        axiosPublic.post("/users", {
+          name: user?.displayName,
+          email: user?.email,
+          photo: user?.photoURL,
+          role: "user",
+        })
+        .then(res=>console.log(res.data))
+        .catch(err=>console.log(err))
+      }
+    });
+  };
+
   useEffect(() => {
     loadCaptchaEnginge(6);
-  });
+  }, []);
 
   const handleValidateCaptcha = () => {
-    const value = captchaRef.current.value
+    const value = captchaRef.current.value;
     if (validateCaptcha(value, false)) {
       setCaptchaCorrect(true);
     } else {
@@ -98,11 +117,11 @@ const Login = () => {
             </label>
             <input
               {...register("email", {
-                required:"Email required.",
-                pattern:{
-                  value:emailRegex,
-                  message:"Invalid email."
-                }
+                required: "Email required.",
+                pattern: {
+                  value: emailRegex,
+                  message: "Invalid email.",
+                },
               })}
               type="text"
               name="email"
@@ -117,11 +136,10 @@ const Login = () => {
               {errors.email?.message}
             </p>
           )}
-          {
-            errors.email?.type === "pattern" && (
-              <p role="alert" className="text-red-500 text-left">
-                {errors.email?.message}
-              </p>
+          {errors.email?.type === "pattern" && (
+            <p role="alert" className="text-red-500 text-left">
+              {errors.email?.message}
+            </p>
           )}
           <div className="flex mt-6 relative">
             <label htmlFor="password" className="absolute left-0 font-semibold">
@@ -129,7 +147,7 @@ const Login = () => {
             </label>
             <input
               {...register("password", {
-                required: "Password is required."
+                required: "Password is required.",
               })}
               name="password"
               type={`${showPassword ? "text" : "password"}`}
@@ -164,7 +182,9 @@ const Login = () => {
                   type="text"
                   name="captcha"
                   placeholder="Enter the characters"
-                  className={`outline-none p-4 w-full relative border-2 ${captchaCorrect ? "border-green-400":"border-gray-400"} rounded-md rounded-r-none`}
+                  className={`outline-none p-4 w-full relative border-2 ${
+                    captchaCorrect ? "border-green-400" : "border-gray-400"
+                  } rounded-md rounded-r-none`}
                   id="captcha"
                   ref={captchaRef}
                   onBlur={handleValidateCaptcha}
@@ -174,21 +194,24 @@ const Login = () => {
                   className={`rounded-r-sm p-4 text-white text-2xl ${
                     captchaCorrect ? "bg-green-400" : "bg-gray-400"
                   }`}
-                >{ captchaCorrect ? <FaCheck></FaCheck> :
-                  <HiOutlineRefresh></HiOutlineRefresh>
-                  }</button>
+                >
+                  {captchaCorrect ? (
+                    <FaCheck></FaCheck>
+                  ) : (
+                    <HiOutlineRefresh></HiOutlineRefresh>
+                  )}
+                </button>
               </div>
 
-              {captchaCorrect || captchaRef?.current?.value && (
-                <p className="ml-2 font-medium text-red-500 ">
-                  Invalid characters
-                </p>
-              )}
+              {captchaCorrect ||
+                (captchaRef?.current?.value && (
+                  <p className="ml-2 font-medium text-red-500 ">
+                    Invalid characters
+                  </p>
+                ))}
             </div>
           </div>
-          {
-            showError && <p className="text-red-500 ">{errorMsg}</p>
-          }
+          {showError && <p className="text-red-500 ">{errorMsg}</p>}
           <button
             disabled={!captchaCorrect}
             className={`text-xl transition-colors p-4 rounded-md font-semibold ${
@@ -206,23 +229,30 @@ const Login = () => {
               to="/signup"
               className="underline underline-offset-8 font-semibold"
             >
-              {" "}
               Signup!
             </Link>
           </span>
 
           <span className="block mt-8">Or sign in with</span>
           <div className="flex gap-4 mt-2 justify-center">
-
-            <button onClick={LoginGoogle} className="border-2 border-gray-900 rounded-full p-4 text-xl hover:bg-gray-900 hover:text-[#fafafa] transition-colors">
+            <button
+              onClick={handleLoginWithGoogle}
+              className="border-2 border-gray-900 rounded-full p-4 text-xl hover:bg-gray-900 hover:text-[#fafafa] transition-colors"
+            >
               <FaGoogle></FaGoogle>
             </button>
 
-            <button onClick={LoginFacebook} className="border-2 border-gray-900 rounded-full p-4 text-xl hover:bg-gray-900 hover:text-[#fafafa] transition-colors">
+            <button
+              onClick={LoginFacebook}
+              className="border-2 border-gray-900 rounded-full p-4 text-xl hover:bg-gray-900 hover:text-[#fafafa] transition-colors"
+            >
               <FaFacebook></FaFacebook>
             </button>
 
-            <div onClick={LoginGitHub} className="border-2 border-gray-900 rounded-full p-4 text-xl hover:bg-gray-900 hover:text-[#fafafa] transition-colors">
+            <div
+              onClick={LoginGitHub}
+              className="border-2 border-gray-900 rounded-full p-4 text-xl hover:bg-gray-900 hover:text-[#fafafa] transition-colors"
+            >
               <FaGithub></FaGithub>
             </div>
           </div>

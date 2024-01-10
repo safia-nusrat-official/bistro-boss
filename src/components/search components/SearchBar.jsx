@@ -7,8 +7,9 @@ const SearchBar = () => {
   const inputRef = useRef()
   const {searchQuery, clearSearch, handleSearchActive} = useSearchContext()
   const [searchActive, setSearchActive] = useState(false)
+
   return (
-    <div className={`${searchActive?"border-b-0":"border-b-2"} p-4 relative border-gray-200 bg-[#fafafa] md:mx-28 mt-16 mb-0 flex items-center justify-between`}>
+    <div className={`${searchActive?"border-b-0":"border-b-2"} p-4 relative border-gray-200 bg-[#fafafa] flex items-center justify-between`}>
       <form onSubmit={(e)=>{
         e.preventDefault(e)
         handleSearchActive(e.target?.input?.value)
@@ -21,6 +22,7 @@ const SearchBar = () => {
       <CiSearch></CiSearch>
       </button>
       <input 
+      defaultValue={searchQuery}
       name="input"
       ref={inputRef}
       onFocus={()=>setSearchActive(true)}
@@ -40,7 +42,7 @@ const SearchBar = () => {
       }}
       className={`${searchActive?"text-gray-700":"text-gray-400"}`}>
       <TfiClose></TfiClose></button>
-      <div className={`absolute ${searchActive?"w-full":"w-0"} border-b-2 bottom-0 left-0 border-gray-700 transition-all transform ease-in-out duration-300 origin-center`}></div>
+      <div className={`absolute ${searchActive?"scale-x-100":"scale-x-0"} w-full border-b-2 bottom-0 left-0 border-gray-700 transition-all transform ease-in-out duration-300 origin-center justify-self-center`}></div>
     </div>
   )
 }

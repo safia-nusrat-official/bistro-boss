@@ -10,21 +10,24 @@ import axios from "axios";
 import { BsUpload } from "react-icons/bs";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import useUser from "../hooks/useUser";
 
 const Signup = () => {
   const API_KEY = import.meta.env.VITE_IMG_HOSTING_API_KEY;
   const API_URL = `https://api.imgbb.com/1/upload?key=${API_KEY}`;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[?$%&*#@_\-;!])[A-Za-z\d?$%&*#@_\-;!]{6,}$/;
-    
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const axiosPublic = useAxiosPublic();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { Signup, UpdateProfile } = useContext(AuthContext);
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -42,16 +45,24 @@ const Signup = () => {
 
     Signup(email, password)
       .then((res) => {
+        const user = res.user;
         res.user.displayName = name;
         res.user.photoURL = imgURL;
         UpdateProfile(name, imgURL)
-          .then((result) => {})
+          .then(() => {
+            axiosPublic.post("/users", {
+              name: user?.displayName,
+              email: user?.email,
+              photo: user?.photoURL,
+              role: "user",
+            })
+          })
           .catch((err) => console.log(err));
-
         Swal.fire({
           icon: "success",
           title: "Account created successfully!",
         });
+        reset();
         navigate(location?.state?.from?.pathname || "/", (replace = true));
       })
       .catch((err) => {

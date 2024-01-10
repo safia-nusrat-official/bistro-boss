@@ -78,7 +78,7 @@ const CategorySection = () => {
         >
           <SwiperSlide className="relative">
             <Link className="relative" to="/shop/salad">
-              <img src={slide1} alt="" />
+              <img src={slide1} alt="" className="w-full"/>
               <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
                 Salads
               </div>
@@ -87,7 +87,7 @@ const CategorySection = () => {
 
           <SwiperSlide className="relative">
             <Link to="/shop/pizza" className="relative">
-              <img src={slide2} alt="" />
+              <img src={slide2} alt="" className="w-full"/>
               <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
                 Pizzas
               </div>
@@ -96,7 +96,7 @@ const CategorySection = () => {
 
           <SwiperSlide className="relative">
             <Link to="/shop/soup" className="relative">
-              <img src={slide3} alt="" />
+              <img src={slide3} alt="" className="w-full"/>
               <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
                 Soups
               </div>
@@ -105,7 +105,7 @@ const CategorySection = () => {
 
           <SwiperSlide className="relative">
             <Link to="/shop/dessert" className="relative">
-              <img src={slide4} alt="" />
+              <img src={slide4} alt="" className="w-full"/>
               <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
                 Desserts
               </div>
@@ -114,7 +114,7 @@ const CategorySection = () => {
 
           <SwiperSlide className="relative">
             <Link to="/shop/drinks" className="relative">
-              <img src={slide5} alt="" />
+              <img src={slide5} alt="" className="w-full"/>
               <div className="bg-gradient-to-t from-black to-transparent bg-opacity-30 w-full h-full items-end justify-center p-6 font-clash-display text-[#fafafa] flex absolute bottom-0 text-3xl">
                 Drinks
               </div>

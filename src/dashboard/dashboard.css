@@ -1,0 +1,7 @@
+.dashboard.active{
+    color: rgb(17, 14, 19);
+    background-color: rgba(54, 61, 72, 0.07);
+}
+.dashboard.active::after{
+    display: none;
+}

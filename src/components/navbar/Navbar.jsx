@@ -1,15 +1,16 @@
 import { FaCartShopping } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import { TbMenu } from "react-icons/tb";
 import "./nav.css";
 import { Link, NavLink } from "react-router-dom";
-import { HiMenuAlt1 } from "react-icons/hi";
-import { AuthContext } from "../../providers/AuthProvider";
 import { MdOutlineLogout } from "react-icons/md";
+import useCart from "../../hooks/useCart";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, loading, Logout } = useContext(AuthContext);
+  const { user, loading, Logout } = useAuth();
+  const { cartItems:cart } = useCart();
 
   const links = (
     <>
@@ -33,12 +34,12 @@ const Navbar = () => {
       >
         <span>Our Shop</span>
       </NavLink>
-      {/* 
-      <NavLink
-        to="/orders"
+
+      {/* <NavLink
+        to="/dashboard/home"
         className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
       >
-        <span>Orders</span>
+        <span>Dashboard</span>
       </NavLink> */}
 
       <NavLink
@@ -49,12 +50,12 @@ const Navbar = () => {
       </NavLink>
       {user && (
         <NavLink
-          to={`/cart/${user?.email}`}
+          to={`/dashboard/cart`}
           className="transition-colors hover:text-[#ecd610] md:ml-4 font-semibold"
         >
           <span className="flex items-center gap-2">
             Cart <FaCartShopping className="text-xl"></FaCartShopping>
-            <div className="badge">4+</div>
+            <div className="badge">{cart?.length||0}</div>
           </span>
         </NavLink>
       )}

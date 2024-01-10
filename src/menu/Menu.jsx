@@ -16,12 +16,12 @@ import SearchBar from "../components/search components/SearchBar";
 import SearchGrid from "../components/search components/SearchGrid";
 
 export const Menu = () => {
-  const [menu, loading] = useMenu();
-  const desserts = menu.filter((item) => item?.category === "dessert");
-  const pizzas = menu.filter((item) => item?.category === "pizza");
-  const soups = menu.filter((item) => item?.category === "soup");
-  const salads = menu.filter((item) => item?.category === "salad");
-  const drinks = menu.filter((item) => item?.category === "drinks");
+  const {menu, loading} = useMenu({selectedCategory:""});
+  const { menu: desserts } = useMenu({ selectedCategory: "dessert" });
+  const { menu: pizzas } = useMenu({ selectedCategory: "pizza" });
+  const { menu: soups } = useMenu({ selectedCategory: "soup" });
+  const { menu: salads } = useMenu({ selectedCategory: "salad" });
+  const { menu: drinks } = useMenu({ selectedCategory: "drinks" });
 
   return (
     <div>
@@ -36,7 +36,7 @@ export const Menu = () => {
         desc="Savor the Symphony: Bistro Boss, where culinary craftsmanship meets diverse delights, inviting you to experience an exquisite symphony of flavors at every turn on Our Menu."
       ></SectionCover>
 
-      <section>
+      <section className="md:px-28 pt-16 pb-0 ">
         <SearchProvider>
           <SearchBar></SearchBar>
           <SearchGrid></SearchGrid>
@@ -73,7 +73,7 @@ export const Menu = () => {
           desc="Pizza perfection unfolds at Bistro Boss, where artisanal crusts meet premium toppings in a symphony of flavors, creating an unforgettable slice of culinary bliss."
         ></SectionCover>
 
-        <MenuGrid menu={pizzas.slice(0, 4)}></MenuGrid>
+        <MenuGrid menu={pizzas.slice(1, 7)}></MenuGrid>
       </section>
       <section>
         <SectionCover
@@ -82,7 +82,7 @@ export const Menu = () => {
           desc="Immerse yourself in the comforting embrace of our soulful soups at Bistro Boss—each spoonful a celebration of rich flavors and nourishing warmth, promising a cozy respite for your palate."
         ></SectionCover>
 
-        <MenuGrid menu={soups.slice(0, 4)}></MenuGrid>
+        <MenuGrid menu={soups.slice(0, 6)}></MenuGrid>
       </section>
       <section>
         <SectionCover
@@ -91,7 +91,7 @@ export const Menu = () => {
           desc="Elevate your dining experience with our vibrant salads at Bistro Boss, where freshness meets creativity. From crisp greens to exotic toppings, our salads are a refreshing symphony of colors and textures, ensuring a delightful and wholesome journey with every bite."
         ></SectionCover>
 
-        <MenuGrid menu={salads.slice(0, 4)}></MenuGrid>
+        <MenuGrid menu={salads.slice(0, 6)}></MenuGrid>
       </section>
       <section>
         <SectionCover
@@ -100,7 +100,7 @@ export const Menu = () => {
           desc="Pizza perfection unfolds at Bistro Boss, where artisanal crusts meet premium toppings in a symphony of flavors, creating an unforgettable slice of culinary bliss."
         ></SectionCover>
 
-        <MenuGrid menu={drinks.slice(0, 4)}></MenuGrid>
+        <MenuGrid menu={drinks.slice(0, 6)}></MenuGrid>
       </section>
     </div>
   );

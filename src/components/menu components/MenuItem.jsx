@@ -7,7 +7,7 @@ const MenuItem = ({ data }) => {
     <Link to={`/items/${_id}`} className="flex flex-wrap items-start hover:bg-black/5 hover:scale-105 transition-transform p-4 md:flex-nowrap">
       <img
         src={image}
-        className="md:rounded-tl-none md:rounded-r-full object-cover  md:rounded-b-full rounded-full md:w-20 w-full  aspect-square" alt=""
+        className="md:rounded-tr-none md:rounded-r-full object-cover  md:rounded-b-full rounded-full md:w-28 w-full  aspect-square" alt=""
       />
       <div className="md:ml-4 mt-4 md:mt-0 ml-0 md:text-left text-center">
         <div>
